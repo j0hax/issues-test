@@ -16,7 +16,6 @@ jobs:
       - name: Open Issue
         run: |
           gh issue --repo ${{ github.repository }} \
-            create --title "Daily Issue: ${{ env.NOW }}" --body "Hello World"
+            create --title "Daily Issue: ${{ env.NOW }}" --body "Hello World" --assignee j0hax
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
