@@ -1,0 +1,18 @@
+name: Weekly Issue Demo
+on:
+  schedule:
+    - cron: "30 13 * * *" # daily
+jobs:
+  create-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Daily Issue
+        uses: GuillaumeFalourd/open-issue-action@v1
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          repo-owner: j0hax
+          repo-name: issues-test
+          issue-title: Daily Issue
+          issue-body: hello world
+          issue-labels: daily
+          issue-assignees: j0hax
