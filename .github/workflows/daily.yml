@@ -1,18 +1,21 @@
-name: Weekly Issue Demo
+name: Open Daily Issue
 on:
   schedule:
-    - cron: "30 13 * * *" # daily
+    - cron: '30 13 * * *'
+
 jobs:
-  create-issue:
+  open-issue:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
-      - name: Daily Issue
-        uses: GuillaumeFalourd/open-issue-action@v1
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          repo-owner: j0hax
-          repo-name: issues-test
-          issue-title: Daily Issue
-          issue-body: hello world
-          issue-labels: daily
-          issue-assignees: j0hax
+      - name: Get Date
+        run: echo "NOW=$(date +'%A, %e %B')" >> $GITHUB_ENV
+      - name: Open Issue
+        run: |
+          gh issue --repo ${{ github.repository }} \
+            create --title "Daily Issue: ${{ env.NOW }}" --body "Hello World"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
