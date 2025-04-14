@@ -1,7 +1,8 @@
 name: Open Daily Issue
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '30 13 * * *'
+    - cron: '0 8 * * *'
 
 jobs:
   open-issue:
