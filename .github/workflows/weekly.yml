@@ -1,21 +1,21 @@
-name: Open Daily Issue
+name: Open Weekly Issue
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 * * 1'
 
 jobs:
-  daily-issue:
+  weekly-issue:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       issues: write
     steps:
       - name: Get Date
-        run: echo "NOW=$(date +'%A, %e %B')" >> $GITHUB_ENV
+        run: echo "NOW=$(date +'Week Number %U')" >> $GITHUB_ENV
       - name: Open Issue
         run: |
           gh issue --repo ${{ github.repository }} \
-            create --title "Daily Issue for ${{ env.NOW }}" --body "Hello World" --assignee j0hax
+            create --title "Weekly Issue for ${{ env.NOW }}" --body "Hello World" --assignee j0hax
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
