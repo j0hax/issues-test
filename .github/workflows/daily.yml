@@ -11,11 +11,14 @@ jobs:
       contents: read
       issues: write
     steps:
+      - name: Debug
+        run: pwd && ls -la
       - name: Get Date
         run: echo "NOW=$(date +'%A, %e %B')" >> $GITHUB_ENV
       - name: Open Issue
         run: |
           gh issue --repo ${{ github.repository }} \
-            create --title "Daily Issue for ${{ env.NOW }}" --body "Hello World" --assignee j0hax
+            create --title "Daily Issue for ${{ env.NOW }}" \
+            --body-file .github/workflows/daily.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
