@@ -1,8 +1,8 @@
 name: Open Monthly Issue
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 8 1 * *'
+  #schedule:
+  #  - cron: '0 8 1 * *'
 
 jobs:
   monthly-issue:
