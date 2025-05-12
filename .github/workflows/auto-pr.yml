@@ -1,6 +1,5 @@
-name: Merge Test to QA
+name: Create automatic PR
 on:
-  workflow_dispatch:
   workflow_call:
     inputs:
       src-branch:
