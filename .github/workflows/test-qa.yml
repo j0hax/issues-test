@@ -6,6 +6,8 @@ on:
 
 jobs:
   test-qa:
+    permissions:
+      pull-requests: write
     # The 'uses' attribute must be changed to reflect the repo
     uses: j0hax/issues-test/.github/workflows/auto-pr.yml@main
     with:
