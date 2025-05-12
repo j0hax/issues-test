@@ -12,6 +12,8 @@ on:
 jobs:
   open-auto-pr:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - name: Open Automatic Pull Request
