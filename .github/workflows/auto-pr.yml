@@ -1,0 +1,22 @@
+name: Merge Test to QA
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      src-branch:
+        required: true
+        type: string
+      dst-branch:
+        required: true
+        type: string
+
+jobs:
+  open-auto-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Open Automatic Pull Request
+        run: |
+          gh pr create --head ${{ inputs.src-branch }} --base ${{ inputs.dst-branch }} --title "[RELEASE] Merge ${{ inputs.src-branch }} to ${{ inputs.dst-branch }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
