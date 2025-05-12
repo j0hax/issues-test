@@ -1,4 +1,4 @@
-# issues-test
+# actions-templates
 
 ## Installation
 
@@ -37,7 +37,7 @@ jobs:
     permissions:
       pull-requests: write
     # The 'uses' attribute must be changed to reflect the repo
-    uses: j0hax/issues-test/.github/workflows/auto-pr.yml@main
+    uses: j0hax/actions-templates/.github/workflows/auto-pr.yml@main
     with:
       src-branch: test
       dst-branch: QA
