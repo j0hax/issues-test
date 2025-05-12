@@ -16,6 +16,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Open Automatic Pull Request
         run: |
-          gh pr create --head ${{ inputs.src-branch }} --base ${{ inputs.dst-branch }} --title "[RELEASE] Merge ${{ inputs.src-branch }} to ${{ inputs.dst-branch }}"
+          gh pr create --head ${{ inputs.src-branch }} --base ${{ inputs.dst-branch }} --title "[RELEASE] Merge ${{ inputs.src-branch }} to ${{ inputs.dst-branch }}" --body "Automatic Pull Request: `${{ inputs.src-branch }}` -> `${{ inputs.dst-branch }}`"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
